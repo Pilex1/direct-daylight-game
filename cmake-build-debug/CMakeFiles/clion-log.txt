@@ -1,0 +1,4 @@
+/home/pilex/Downloads/clion-2019.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/pilex/Documents/direct-daylight-game
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/pilex/Documents/direct-daylight-game/cmake-build-debug

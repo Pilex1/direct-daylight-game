@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pilex/Documents/direct-daylight-game/Game.cpp
+Game.h
+/home/pilex/Documents/direct-daylight-game/Game.h
+iostream
+-
+
+/home/pilex/Documents/direct-daylight-game/Game.h
+SFML/Graphics.hpp
+-
+World.h
+/home/pilex/Documents/direct-daylight-game/World.h
+
+/home/pilex/Documents/direct-daylight-game/World.h
+SFML/Graphics.hpp
+-
+

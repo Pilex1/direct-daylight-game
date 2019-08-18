@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/direct_daylight_game.dir/main.cpp.o CMakeFiles/direct_daylight_game.dir/Game.cpp.o CMakeFiles/direct_daylight_game.dir/World.cpp.o  -o direct_daylight_game -lsfml-graphics -lsfml-window -lsfml-system 
