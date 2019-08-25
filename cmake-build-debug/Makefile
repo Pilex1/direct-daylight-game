@@ -150,6 +150,33 @@ Game.cpp.s:
 	$(MAKE) -f CMakeFiles/direct_daylight_game.dir/build.make CMakeFiles/direct_daylight_game.dir/Game.cpp.s
 .PHONY : Game.cpp.s
 
+SceneNode.o: SceneNode.cpp.o
+
+.PHONY : SceneNode.o
+
+# target to build an object file
+SceneNode.cpp.o:
+	$(MAKE) -f CMakeFiles/direct_daylight_game.dir/build.make CMakeFiles/direct_daylight_game.dir/SceneNode.cpp.o
+.PHONY : SceneNode.cpp.o
+
+SceneNode.i: SceneNode.cpp.i
+
+.PHONY : SceneNode.i
+
+# target to preprocess a source file
+SceneNode.cpp.i:
+	$(MAKE) -f CMakeFiles/direct_daylight_game.dir/build.make CMakeFiles/direct_daylight_game.dir/SceneNode.cpp.i
+.PHONY : SceneNode.cpp.i
+
+SceneNode.s: SceneNode.cpp.s
+
+.PHONY : SceneNode.s
+
+# target to generate assembly for a file
+SceneNode.cpp.s:
+	$(MAKE) -f CMakeFiles/direct_daylight_game.dir/build.make CMakeFiles/direct_daylight_game.dir/SceneNode.cpp.s
+.PHONY : SceneNode.cpp.s
+
 World.o: World.cpp.o
 
 .PHONY : World.o
@@ -216,6 +243,9 @@ help:
 	@echo "... Game.o"
 	@echo "... Game.i"
 	@echo "... Game.s"
+	@echo "... SceneNode.o"
+	@echo "... SceneNode.i"
+	@echo "... SceneNode.s"
 	@echo "... World.o"
 	@echo "... World.i"
 	@echo "... World.s"

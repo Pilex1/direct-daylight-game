@@ -93,6 +93,12 @@
 		<Unit filename="/home/pilex/Documents/direct-daylight-game/ResourceHolder.h">
 			<Option target="direct_daylight_game"/>
 		</Unit>
+		<Unit filename="/home/pilex/Documents/direct-daylight-game/SceneNode.cpp">
+			<Option target="direct_daylight_game"/>
+		</Unit>
+		<Unit filename="/home/pilex/Documents/direct-daylight-game/SceneNode.h">
+			<Option target="direct_daylight_game"/>
+		</Unit>
 		<Unit filename="/home/pilex/Documents/direct-daylight-game/World.cpp">
 			<Option target="direct_daylight_game"/>
 		</Unit>

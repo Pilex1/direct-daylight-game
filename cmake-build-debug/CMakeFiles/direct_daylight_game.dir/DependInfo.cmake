@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/pilex/Documents/direct-daylight-game/Game.cpp" "/home/pilex/Documents/direct-daylight-game/cmake-build-debug/CMakeFiles/direct_daylight_game.dir/Game.cpp.o"
+  "/home/pilex/Documents/direct-daylight-game/SceneNode.cpp" "/home/pilex/Documents/direct-daylight-game/cmake-build-debug/CMakeFiles/direct_daylight_game.dir/SceneNode.cpp.o"
   "/home/pilex/Documents/direct-daylight-game/World.cpp" "/home/pilex/Documents/direct-daylight-game/cmake-build-debug/CMakeFiles/direct_daylight_game.dir/World.cpp.o"
   "/home/pilex/Documents/direct-daylight-game/main.cpp" "/home/pilex/Documents/direct-daylight-game/cmake-build-debug/CMakeFiles/direct_daylight_game.dir/main.cpp.o"
   )

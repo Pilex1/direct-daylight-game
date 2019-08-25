@@ -17,9 +17,11 @@ class Game {
 
 private:
     RenderWindow window;
-    View view;
 
     World world;
+
+    bool movingLeft;
+    bool movingRight;
 
 public:
     Game();
@@ -29,7 +31,7 @@ public:
 private:
     void processEvents();
 
-    void update();
+    void update(Time time);
 
     void render();
 };

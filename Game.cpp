@@ -5,20 +5,16 @@
 #include "Game.h"
 #include <iostream>
 
-Game::Game(): world(window) {
+Game::Game() : world(window) {
     window.create(VideoMode(680, 480), "Direct Daylight");
-
-//   view.reset(FloatRect(0,0,680, 480));
-    view.setCenter(0, 0);
-    view.setViewport(FloatRect(0, 0, 1, 1));
-
-    window.setView(view);
 }
 
 void Game::run() {
+    Clock clock;
     while (window.isOpen()) {
+        Time deltaTime = clock.restart();
         processEvents();
-        update();
+        update(deltaTime);
         render();
     }
 }
@@ -35,28 +31,36 @@ void Game::processEvents() {
         window.close();
     }
 
+    movingLeft = false;
+    movingRight = false;
     if (Keyboard::isKeyPressed(Keyboard::A)) {
-
-        view.move(-1, 0);
+        movingLeft = true;
     }
     if (Keyboard::isKeyPressed(Keyboard::D)) {
-        view.move(1, 0);
+        movingRight = true;
     }
 
-    std::cout << view.getCenter().x << ", " << view.getCenter().y << std::endl;
+    // std::cout << view.getCenter().x << ", " << view.getCenter().y << std::endl;
 }
 
-void Game::update() {
+void Game::update(Time deltaTime) {
+    // TODO: fixed distance steps
 
+    if (movingLeft) {
+        world.moveLeft(deltaTime.asSeconds());
+    }
+    if (movingRight) {
+        world.moveRight(deltaTime.asSeconds());
+    }
 }
 
 void Game::render() {
     window.clear();
 
-    window.setView(view);
+//    window.setView(view);
     world.draw();
 
-    window.setView(window.getDefaultView());
+//    window.setView(window.getDefaultView());
     // stuff that doesn't change with the view
 
     window.display();

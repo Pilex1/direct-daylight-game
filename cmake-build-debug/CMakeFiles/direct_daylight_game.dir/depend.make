@@ -3,12 +3,18 @@
 
 CMakeFiles/direct_daylight_game.dir/Game.cpp.o: ../Game.cpp
 CMakeFiles/direct_daylight_game.dir/Game.cpp.o: ../Game.h
+CMakeFiles/direct_daylight_game.dir/Game.cpp.o: ../ResourceHolder.h
 CMakeFiles/direct_daylight_game.dir/Game.cpp.o: ../World.h
 
+CMakeFiles/direct_daylight_game.dir/SceneNode.cpp.o: ../SceneNode.cpp
+CMakeFiles/direct_daylight_game.dir/SceneNode.cpp.o: ../SceneNode.h
+
+CMakeFiles/direct_daylight_game.dir/World.cpp.o: ../ResourceHolder.h
 CMakeFiles/direct_daylight_game.dir/World.cpp.o: ../World.cpp
 CMakeFiles/direct_daylight_game.dir/World.cpp.o: ../World.h
 
 CMakeFiles/direct_daylight_game.dir/main.cpp.o: ../Game.h
+CMakeFiles/direct_daylight_game.dir/main.cpp.o: ../ResourceHolder.h
 CMakeFiles/direct_daylight_game.dir/main.cpp.o: ../World.h
 CMakeFiles/direct_daylight_game.dir/main.cpp.o: ../main.cpp
 

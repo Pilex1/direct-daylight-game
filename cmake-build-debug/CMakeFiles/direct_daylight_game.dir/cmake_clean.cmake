@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/direct_daylight_game.dir/main.cpp.o"
   "CMakeFiles/direct_daylight_game.dir/Game.cpp.o"
   "CMakeFiles/direct_daylight_game.dir/World.cpp.o"
+  "CMakeFiles/direct_daylight_game.dir/SceneNode.cpp.o"
   "direct_daylight_game.pdb"
   "direct_daylight_game"
 )

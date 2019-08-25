@@ -6,19 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/pilex/Documents/direct-daylight-game/Game.cpp
-Game.h
-/home/pilex/Documents/direct-daylight-game/Game.h
-iostream
+/home/pilex/Documents/direct-daylight-game/SceneNode.cpp
+algorithm
 -
-
-/home/pilex/Documents/direct-daylight-game/Game.h
-SFML/Graphics.hpp
+cassert
 -
-World.h
-/home/pilex/Documents/direct-daylight-game/World.h
+SceneNode.h
+/home/pilex/Documents/direct-daylight-game/SceneNode.h
 
-/home/pilex/Documents/direct-daylight-game/World.h
-SFML/Graphics.hpp
+/home/pilex/Documents/direct-daylight-game/SceneNode.h
+memory
+-
+vector
+-
+SFML/Graphics/Transformable.hpp
+-
+SFML/Graphics/Drawable.hpp
+-
+SFML/System/NonCopyable.hpp
 -
 
