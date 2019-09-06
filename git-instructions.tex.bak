@@ -1,0 +1,100 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts, amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage[nottoc, notlot, notlof]{tocbibind}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{url}
+\usepackage{textcomp}
+
+\newcommand{\sectionbreak}{\clearpage}
+
+% FORMATTING CODE 
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=bash,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+% CUSTOM HEADER & FOOTER
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[L]{Connecting to directdaylight.com}
+\fancyhead[R]{\today}
+\fancyfoot[C]{\thepage}
+
+\parindent 0ex
+
+\renewcommand \labelitemi{--}
+
+\begin{document}
+	
+\begin{titlepage}
+\title{Connecting to directdaylight.com}
+\author{Alex Tan}
+\date{\today}
+\maketitle{}
+\thispagestyle{empty}
+\end{titlepage}
+
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+
+\setcounter{page}{1}
+
+\section{Git \& SSH}
+\subsection{Generate an SSH key}
+\begin{enumerate}
+\item Open a terminal.
+\item Run \lstinline{ssh-keygen}.
+\item Keep pressing Enter when prompted.
+\item Take note of where the \lstinline{id_rsa.pub} file is stored. In Windows, this is usually stored under \lstinline{C:\Users\your_username/.ssh/id_rsa.pub}
+\item Send the \lstinline{id_rsa.pub} to me.
+\end{enumerate}
+\subsection{Setting up git}
+\begin{enumerate}
+\item Download and install git if you have not done so already: \url{https://git-scm.com/downloads}
+\item Search for the git console in the Start Menu and run it. A command prompt should open up.
+\end{enumerate}
+\subsection{Command prompt basics}
+There are numerous commands that can be run in the command prompt. The following are the most useful to get you started.
+\paragraph{ls}
+Lists all the files and directories in your current directory.
+\paragraph{pwd} Outputs the directory you are currently in (pwd = print working directory).
+\paragraph{cd directory\_name} Navigates to the specified directory. 
+\subsection{Git basics}
+\begin{enumerate}
+\item \lstinline{git add .}
+\item If this is your first time using git you will also need to run the following commands:
+\begin{enumerate}
+\item git config --global user.email "username@email.com"
+\item git config --global user.name "name"
+\end{enumerate}
+\item \lstinline{git commit -m "commit message"}
+\item \lstinline{git push origin master}
+\end{enumerate}
+To pull changes, run \lstinline{git pull origin master}
+\end{document}

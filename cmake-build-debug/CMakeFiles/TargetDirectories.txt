@@ -1,3 +1,0 @@
-/home/pilex/Documents/direct-daylight-game/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/pilex/Documents/direct-daylight-game/cmake-build-debug/CMakeFiles/direct_daylight_game.dir
-/home/pilex/Documents/direct-daylight-game/cmake-build-debug/CMakeFiles/edit_cache.dir
