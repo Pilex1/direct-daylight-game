@@ -34,6 +34,7 @@ public class Main extends PApplet {
 		background = new ArrayList<>();
 		background.add(new BackgroundLayer(ResourceKey.Background, new PVector(0, 0), 1));
 		background.add(new BackgroundLayer(ResourceKey.Foreground, new PVector(0, 0), 2));
+
 		camera = new Camera(new PVector(0, 0));
 	}
 
@@ -64,7 +65,6 @@ public class Main extends PApplet {
 			b.draw(camera);
 		}
 
-		System.out.println(frameRate);
 	}
 
 	@Override
@@ -79,7 +79,8 @@ public class Main extends PApplet {
 
 	@Override
 	public void dispose() {
-
+		// do not get rid of this line otherwise the window won't close!
+		super.dispose();
 	}
 
 }

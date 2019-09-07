@@ -41,7 +41,7 @@
 \pagestyle{fancy}
 \fancyhead{}
 \fancyfoot{}
-\fancyhead[L]{Connecting to directdaylight.com}
+\fancyhead[L]{The Direct Daylight Project}
 \fancyhead[R]{\today}
 \fancyfoot[C]{\thepage}
 
@@ -52,7 +52,7 @@
 \begin{document}
 	
 \begin{titlepage}
-\title{Connecting to directdaylight.com}
+\title{The Direct Daylight Project}
 \author{Alex Tan}
 \date{\today}
 \maketitle{}
@@ -66,35 +66,72 @@
 \setcounter{page}{1}
 
 \section{Git \& SSH}
+This section covers how to download the project files, make changes, and sync these changes so that it can be viewed by the whole team.
 \subsection{Generate an SSH key}
+You will need an SSH key to gain access to the project files. Think of it as like a password. Follow the following steps to get started.
 \begin{enumerate}
 \item Open a terminal.
 \item Run \lstinline{ssh-keygen}.
-\item Keep pressing Enter when prompted.
-\item Take note of where the \lstinline{id_rsa.pub} file is stored. In Windows, this is usually stored under \lstinline{C:\Users\your_username/.ssh/id_rsa.pub}
-\item Send the \lstinline{id_rsa.pub} to me.
+\begin{itemize}
+\item You will be prompted for a location to save the \lstinline{id_rsa.pub} file. Leave this blank to save it in the default location.
+\end{itemize}
+\item Take note of where the \lstinline{id_rsa.pub} file is stored. You can find the location of the file in the command prompt.
+\begin{itemize}
+\item On Windows, this is usually \lstinline{C:\Users\your_username/.ssh/id_rsa.pub}
+\item On Mac, this is usually \lstinline{/Users/your_username/.ssh/id_rsa.pub}
+\item On Linux, this is usually \lstinline{~/.ssh/id_rsa.pub}
+\end{itemize}
+\item Send the \lstinline{id_rsa.pub} file to Alex.
 \end{enumerate}
+Note that you will also have a file named \lstinline{id_rsa} in the same directory. This is known as your private key and should \textbf{not} be shared with anyone.
 \subsection{Setting up git}
-\begin{enumerate}
-\item Download and install git if you have not done so already: \url{https://git-scm.com/downloads}
-\item Search for the git console in the Start Menu and run it. A command prompt should open up.
-\end{enumerate}
+\paragraph{}
+Git is a tool for keeping track of changes in project files, and for coordinating work between multiple people across the team. You can think of it as a more sophisticated version of Google Drive, or Microsoft OneDrive.
+\paragraph{}
+To get started, first check if you have git installed, and download it if it is not installed.
+\begin{itemize}
+\item On \textbf{Windows}, open the Start Menu and search for git. Unless you have used git before, it probably will not be installed. Visit \url{https://git-scm.com/download/win} to download and install git.\\\\
+To check if it installed correctly, open the Start Menu and search for git. After opening git, a command prompt should open. Now run \lstinline{git --version}.
+\item On \textbf{Mac}, you may or may not have git installed. You can check by opening a terminal and running \lstinline{git --version}. If git is not installed, visit \url{https://git-scm.com/download/mac} to download and install git.\\\\
+To check if it is installed correctly, open a terminal, and run \lstinline{git --version}.
+\item On \textbf{Linux}, you may or may not have git installed. You can check by opening a terminal and running \lstinline{git --version}. If git is not installed, visit \url{https://git-scm.com/download/linux} and follow the instructions.\\\\
+To check if it is installed correctly, open a terminal, and run \lstinline{git --version}.
+\end{itemize}
 \subsection{Command prompt basics}
 There are numerous commands that can be run in the command prompt. The following are the most useful to get you started.
-\paragraph{ls}
-Lists all the files and directories in your current directory.
-\paragraph{pwd} Outputs the directory you are currently in (pwd = print working directory).
-\paragraph{cd directory\_name} Navigates to the specified directory. 
+\begin{center}
+\begin{tabular}{ll}
+\lstinline!ls! & Lists all the files and directories in your current directory.\\ 
+\lstinline!pwd! & Prints the location of your current directory.\\
+\lstinline!cd directory_name! & Navigates to the specified directory (relative to where you currently are).\\
+\lstinline!cd .. ! & Navigates to the parent directory (relative to where you currently are).\\
+\end{tabular} 
+\end{center}
+\subsection{Cloning the repo}
+We first need to download the project files. In the git command line, navigate to somewhere you want to download the project to, and then run the following command.
+\begin{lstlisting}
+git clone git@directdaylight.com:direct-daylight-game
+\end{lstlisting}
+This will create a new folder named \lstinline{direct-daylight-game} and download the project into that folder.
 \subsection{Git basics}
+Now that you have a copy of the project files, you can start editing the files. The following section covers how to \textbf{commit} and \textbf{push }those changes so that it can be viewed by everyone on the team.\\\\
+
 \begin{enumerate}
 \item \lstinline{git add .}
-\item If this is your first time using git you will also need to run the following commands:
+\item If this is your first time using git you will also need to run the following commands. Replace the email and name with your real email and name.
 \begin{enumerate}
-\item git config --global user.email "username@email.com"
+\item git config --global user.email username@email.com''
 \item git config --global user.name "name"
 \end{enumerate}
 \item \lstinline{git commit -m "commit message"}
 \item \lstinline{git push origin master}
 \end{enumerate}
 To pull changes, run \lstinline{git pull origin master}
+
+\section{Trello}
+Trello is an app used for organising and planning out tasks. At each weekly meeting, tasks will be reviewed and assigned.
+\begin{itemize}
+\item Sign up for Trello at \url{https://trello.com}
+\item Join the Trello board at \url{https://trello.com/invite/b/CW6IRbz0/b1605676bf57e5327f3cd156d03979d7/direct-daylight-game}
+\end{itemize}
 \end{document}
