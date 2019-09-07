@@ -66,9 +66,11 @@
 \setcounter{page}{1}
 
 \section{Git \& SSH}
+\paragraph{}
 This section covers how to download the project files, make changes, and sync these changes so that it can be viewed by the whole team.
-\subsection{Generate an SSH key}
-You will need an SSH key to gain access to the project files. Think of it as like a password. Follow the following steps to get started.
+\subsection{Generating an SSH Key}
+\paragraph{}
+You will first need an SSH key to gain access to the project files. Think of an SSH key as like a special password. To get started, follow the following instructions.
 \begin{enumerate}
 \item Open a terminal.
 \item Run \lstinline{ssh-keygen}.
@@ -83,8 +85,9 @@ You will need an SSH key to gain access to the project files. Think of it as lik
 \end{itemize}
 \item Send the \lstinline{id_rsa.pub} file to Alex.
 \end{enumerate}
+\paragraph{}
 Note that you will also have a file named \lstinline{id_rsa} in the same directory. This is known as your private key and should \textbf{not} be shared with anyone.
-\subsection{Setting up git}
+\subsection{Setting Up Git}
 \paragraph{}
 Git is a tool for keeping track of changes in project files, and for coordinating work between multiple people across the team. You can think of it as a more sophisticated version of Google Drive, or Microsoft OneDrive.
 \paragraph{}
@@ -97,7 +100,8 @@ To check if it is installed correctly, open a terminal, and run \lstinline{git -
 \item On \textbf{Linux}, you may or may not have git installed. You can check by opening a terminal and running \lstinline{git --version}. If git is not installed, visit \url{https://git-scm.com/download/linux} and follow the instructions.\\\\
 To check if it is installed correctly, open a terminal, and run \lstinline{git --version}.
 \end{itemize}
-\subsection{Command prompt basics}
+\subsection{Command Prompt Basics}
+\paragraph{}
 There are numerous commands that can be run in the command prompt. The following are the most useful to get you started.
 \begin{center}
 \begin{tabular}{ll}
@@ -107,32 +111,82 @@ There are numerous commands that can be run in the command prompt. The following
 \lstinline!cd .. ! & Navigates to the parent directory (relative to where you currently are).\\
 \end{tabular} 
 \end{center}
-\subsection{Cloning the repo}
+\subsection{Cloning the Repo}
+\paragraph{}
 We first need to download the project files. In the git command line, navigate to somewhere you want to download the project to, and then run the following command.
 \begin{lstlisting}
 git clone git@directdaylight.com:direct-daylight-game
 \end{lstlisting}
+\paragraph{}
 This will create a new folder named \lstinline{direct-daylight-game} and download the project into that folder.
-\subsection{Git basics}
-Now that you have a copy of the project files, you can start editing the files. The following section covers how to \textbf{commit} and \textbf{push }those changes so that it can be viewed by everyone on the team.\\\\
-
-\begin{enumerate}
-\item \lstinline{git add .}
-\item If this is your first time using git you will also need to run the following commands. Replace the email and name with your real email and name.
-\begin{enumerate}
-\item git config --global user.email username@email.com''
-\item git config --global user.name "name"
-\end{enumerate}
-\item \lstinline{git commit -m "commit message"}
-\item \lstinline{git push origin master}
-\end{enumerate}
-To pull changes, run \lstinline{git pull origin master}
-
+\subsection{Git Primer}
+\subsubsection{Viewing the Status of Git}
+\paragraph{}
+Now that you have a copy of the project files, you can start editing the files. Try changing a file or creating a new file. Now run the following command.
+\begin{lstlisting}
+git status
+\end{lstlisting}
+\paragraph{}
+This displays basic information about the current state of the project, such as what files you have edited or created.
+\subsubsection{Committing Files}
+\paragraph{}
+Once you have made changes to the project files and are happy with your changes, you are ready to \textbf{commit} your changes. This can be done by running the following command in the project directory. You will need to provide a commit message, which is a short message for describing what you have changed in this commit. E.g. \lstinline{"added new sound effects"}
+\begin{lstlisting}
+git commit -am "commit message"
+\end{lstlisting}
+\paragraph{}
+If this is your first time using git, you will also need to run the following commands. Replace the email and name with your real email and name.
+\begin{lstlisting}
+git config --global user.email "johnsmith@gmail.com"
+git config --global user.name "John Smith"
+\end{lstlisting}
+\paragraph{}
+After you have committed your changes try running \lstinline{git status} and see what has changed.
+\subsubsection{Pushing Your Own Changes}
+\paragraph{}
+You have now committed your changes to the project, however your changes are not yet visible to the whole team. At this point, you can make more changes and make more commits if you would like. Once you are ready, you can share the changes with the whole team by running the following command.
+\begin{lstlisting}
+git push origin master
+\end{lstlisting}
+\paragraph{}
+This pushes your commits to the main server. Think of it as uploading your changes.
+\paragraph{}
+Under certain situations, you may not be able to push to the server. To solve this, read the following sections.
+\subsubsection{Pulling Other People's Changes}
+Other people may be working on the project as well, and will be committing and pushing changes using \lstinline{git commit} and \lstinline{git push origin master} the same way that you have been doing. Git does \textbf{not} automatically download these changes. To retrieve the latest version of the project, run the following command.
+\begin{lstlisting}
+git pull origin master
+\end{lstlisting}
+\paragraph{}
+This may fail if you have edited files but not yet committed them. This is because these changes may potentially be overwritten. The simplest way to solve this is to commit your changes. Alternatively, you can \textbf{stash} your changes. We will discuss this later on.
+\paragraph{}
+If you are having trouble pushing to the server, it may be because someone else has already made changes using \lstinline{git push origin master}, and you are still on the old version of the project. In this case, running \lstinline{git pull origin master}, and then pushing your changes as usual using \lstinline{git push origin master} should fix the issue.
+\paragraph{}
+However, if someone else has changed a file that you have worked on, or has deleted a file that you have worked on, \lstinline{git pull origin master} will fail. In this case you will get a \textbf{merge conflict}. We will discuss how to solve merge conflicts in the next section.
+\subsubsection{Merge Conflicts}
+\paragraph{}
+A \textbf{merge conflict} typically occurs when two people have changed the same lines in a file, or if one person has deleted a file whilst somebody else was modifying it.
+\paragraph{}
+More info: \url{https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts}
+\subsubsection{Stashing}
+\paragraph{}
+Stashing temporarily shelves (or \textit{stashes}) changes you've made, so that you can work on something else, and come back and re-apply those changes. This is useful if you are working on something, but you aren't quite ready to commit and want to work on something else.
+\paragraph{}
+More info: \url{https://www.atlassian.com/git/tutorials/saving-changes/git-stash}
+\subsubsection{Viewing the Project History}
+\paragraph{}
+You can view the history of the project using the following command.
+\begin{lstlisting}
+git log
+\end{lstlisting}
+\paragraph{}
+This lists out all the commits so far including the person who made the commit, and the commit message. This can be useful for keeping track of who made what changes.
 \section{Trello}
+\paragraph{}
 Trello is an app used for organising and planning out tasks. At each weekly meeting, tasks will be reviewed and assigned.
 \begin{itemize}
 \item Sign up for Trello at \url{https://trello.com}
-\item Accept the invitation to the Trello board at \\ \url{https://trello.com/invite/b/CW6IRbz0/b1605676bf57e5327f3cd156d03979d7/direct-daylight-game}
+\item Accept Trello board invitation at \\ \url{https://trello.com/invite/b/CW6IRbz0/b1605676bf57e5327f3cd156d03979d7/direct-daylight-game}
 \item You can now view and edit the Trello board at \url{https://trello.com/b/CW6IRbz0}
 \end{itemize}
 \end{document}
