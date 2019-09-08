@@ -1,9 +1,5 @@
 package main;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import main.ResourceManager.ResourceKey;
 import processing.core.PApplet;
 import processing.core.PVector;
 
@@ -11,7 +7,6 @@ public class Main extends PApplet {
 
 	public static Main P;
 
-	private List<BackgroundLayer> background;
 	private Camera camera;
 
 	private int prevMillis;
@@ -22,7 +17,7 @@ public class Main extends PApplet {
 
 	@Override
 	public void settings() {
-		size(1600, 900, P2D);
+		size(1600, 900, P3D);
 	}
 
 	@Override
@@ -30,12 +25,9 @@ public class Main extends PApplet {
 		P = this;
 		ResourceManager.init();
 		InputManager.init();
+		SceneManager.init();
 
-		background = new ArrayList<>();
-		background.add(new BackgroundLayer(ResourceKey.Background, new PVector(0, 0), 1));
-		background.add(new BackgroundLayer(ResourceKey.Foreground, new PVector(0, 0), 2));
-
-		camera = new Camera(new PVector(0, 0));
+		camera = new Camera(new PVector(1500, 0));
 	}
 
 	private void handleInputs(float dt) {
@@ -47,10 +39,6 @@ public class Main extends PApplet {
 		}
 	}
 
-	private void update() {
-
-	}
-
 	@Override
 	public void draw() {
 		int millis = millis();
@@ -58,12 +46,10 @@ public class Main extends PApplet {
 		prevMillis = millis;
 
 		handleInputs(dt);
-		update();
 
 		background(255, 255, 255);
-		for (BackgroundLayer b : background) {
-			b.draw(camera);
-		}
+		SceneManager.update(dt);
+		SceneManager.draw(camera);
 
 	}
 

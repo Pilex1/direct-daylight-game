@@ -2,26 +2,45 @@ package main;
 
 import static main.Main.P;
 
+import java.awt.Color;
+
 import main.ResourceManager.ResourceKey;
 import processing.core.PImage;
 import processing.core.PVector;
 
-public class BackgroundLayer implements GraphicsElement {
+public class BackgroundLayer extends Layer {
 
-	private PImage image;
-	private float parallaxFactor;
-
-	public BackgroundLayer(ResourceKey key, PVector offset, float parallaxFactor) {
-		image = ResourceManager.get(key);
-		this.parallaxFactor = parallaxFactor;
+	public BackgroundLayer(ResourceKey key, PVector offset, Color tint, float scale) {
+		super(offset, tint);
+		components.add(new Background(key, scale));
 	}
 
-	@Override
-	public void draw(Camera camera) {
-		P.pushMatrix();
-		P.translate(-camera.getPos().x * parallaxFactor, -camera.getPos().y);
-		P.image(image, 0, 0);
-		P.popMatrix();
+	private class Background implements IGraphicsComponent {
+
+		private float scale;
+		private PImage image;
+
+		private Background(ResourceKey key, float scale) {
+			this.scale = scale;
+			image = ResourceManager.get(key);
+		}
+
+		@Override
+		public void update(float dt) {
+		}
+
+		@Override
+		public void draw(PVector offset) {
+			// model matrix
+			P.scale(scale);
+			P.translate(0, 0, 0);
+
+			// view matrix (camera)
+			P.translate(offset.x / offset.z, offset.y, 0);
+
+			P.image(image, 0, 0);
+		}
+
 	}
 
 }
