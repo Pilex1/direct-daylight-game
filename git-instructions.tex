@@ -52,12 +52,21 @@
 \begin{document}
 	
 \begin{titlepage}
-\title{The Direct Daylight Project}
-\author{Alex Tan}
-\date{\today}
-\maketitle{}
+\begin{center}
+\huge{\textbf{The Direct Daylight Project}}\\
+\line(1,0){400}\\
+\vfill{}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1.0, width=\textwidth]{latex-images/direct-daylight.png}
+\end{figure}
+\vfill{}
+\vfill{}
+\Large{Alex Tan}\\
+\Large{\today}\\
+\end{center}
 \thispagestyle{empty}
-\end{titlepage}
+\end{titlepage}	
 
 \tableofcontents
 \thispagestyle{empty}
@@ -65,7 +74,85 @@
 
 \setcounter{page}{1}
 
-\section{Git \& SSH}
+\section{Introduction}
+The Direct Daylight Project is a 2D, retro-style, story-driven game, with its key themes centred around nostalgia and discovery.
+\subsection{The Team}
+\begin{center}
+\begin{tabular}{ll}
+\textbf{Name} & \textbf{Role} \\ 
+\hline 
+Alex Tan & Technical Lead \\
+Brian Huang & Musical Lead \\
+Dylan Kroft & Project Manager \\
+Xing Lin & Artistic Lead
+\end{tabular} 
+\end{center}
+\subsection{Open Positions}
+\begin{enumerate}
+\item \textbf{Artist}
+\begin{itemize}
+\item especially for drawing people
+\end{itemize}
+\item \textbf{Scriptwriter}
+\begin{itemize}
+\item for fleshing out and writing the dialogue of the story
+\end{itemize}
+\item \textbf{Voice Actors}
+\begin{itemize}
+\item after the script has been finalised
+\item if possible
+\end{itemize}
+\end{enumerate}
+\subsection{Weekly Meetings}
+There will be weekly meetings held in-person to discuss the progress of the project. These will generally be held on Sunday afternoons. Contact Alex for more information.
+\subsection{Learn to Code!}
+The game code is written in Java, using the Processing graphics library. Processing is extremely easy and fun to learn, and you can find some introductory resources at \url{http://directdaylight.com/learn-processing/learn-processing-presentation.pdf}. These resources are aimed towards teaching people who have no prior programming experience the basics of Java and the Processing library.
+\subsubsection{Caveats}
+If you'd like to contribute to the game code, there are some minor differences between the presentation slides and the game code.
+\begin{enumerate}
+\item It is recommended that you use an Integrated Development Environment (IDE) such as Eclipse for Java, instead of the Processing Environment. You can download Eclipse at\\ \url{https://www.eclipse.org/downloads/}.
+\item If you want to access the in-built Processing functions and variables within the code, you first need to put a static import at the top of the file.
+\begin{lstlisting}[language=Java]
+import static main.Main.P;
+\end{lstlisting}
+Then you need to prefix all Processing function calls and variables with \lstinline[language=Java]{P.} as in the following example.
+\begin{lstlisting}[language=Java]
+P.rect(100, 100, 300, 200);
+\end{lstlisting}
+Here is a complete example.
+\begin{lstlisting}[language=Java]
+package main;
+
+import static main.Main.P;
+
+import main.ResourceManager.ResourceKey;
+import processing.core.PImage;
+import processing.core.PVector;
+
+public class BackgroundLayer implements GraphicsElement {
+
+	private PImage image;
+	private float parallaxFactor;
+
+	public BackgroundLayer(ResourceKey key, PVector offset, float parallaxFactor) {
+		image = ResourceManager.get(key);
+		this.parallaxFactor = parallaxFactor;
+	}
+
+	@Override
+	public void draw(Camera camera) {
+		P.pushMatrix();
+		P.translate(-camera.getPos().x * parallaxFactor, -camera.getPos().y);
+		P.image(image, 0, 0);
+		P.popMatrix();
+	}
+
+}
+\end{lstlisting}
+\end{enumerate}
+\section{Documentation}
+The majority of the project documentation can be found in the shared Google Drive folder. Contact Alex for more information.
+\section{SSH \& Git}
 \paragraph{}
 This section covers how to download the project files, make changes, and sync these changes so that it can be viewed by the whole team.
 \subsection{Generating an SSH Key}
@@ -186,7 +273,7 @@ This lists out all the commits so far including the person who made the commit, 
 Trello is an app used for organising and planning out tasks. At each weekly meeting, tasks will be reviewed and assigned.
 \begin{itemize}
 \item Sign up for Trello at \url{https://trello.com}
-\item Accept Trello board invitation at \\ \url{https://trello.com/invite/b/CW6IRbz0/b1605676bf57e5327f3cd156d03979d7/direct-daylight-game}
+\item Accept the Trello board invitation at \\ \url{https://trello.com/invite/b/CW6IRbz0/b1605676bf57e5327f3cd156d03979d7/direct-daylight-game}
 \item You can now view and edit the Trello board at \url{https://trello.com/b/CW6IRbz0}
 \end{itemize}
 \end{document}
