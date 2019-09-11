@@ -23,6 +23,7 @@ public class Main extends PApplet {
 	@Override
 	public void setup() {
 		P = this;
+		// surface.setResizable(true);
 		ResourceManager.init();
 		InputManager.init();
 		SceneManager.init();

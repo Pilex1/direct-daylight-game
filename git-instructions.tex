@@ -152,6 +152,14 @@ public class BackgroundLayer implements GraphicsElement {
 \end{enumerate}
 \section{Documentation}
 The majority of the project documentation can be found in the shared Google Drive folder. Contact Alex for more information.
+\section{Trello}
+\paragraph{}
+Trello is an app used for organising and planning out tasks. At each weekly meeting, tasks will be reviewed and assigned using Trello.
+\begin{itemize}
+\item Sign up for Trello at \url{https://trello.com}
+\item Accept the Trello board invitation at \\ \url{https://trello.com/invite/b/CW6IRbz0/b1605676bf57e5327f3cd156d03979d7/direct-daylight-game}
+\item You can now view and edit the Trello board at \url{https://trello.com/b/CW6IRbz0}
+\end{itemize}
 \section{SSH \& Git}
 \paragraph{}
 This section covers how to download the project files, make changes, and sync these changes so that it can be viewed by the whole team.
@@ -217,9 +225,21 @@ git status
 This displays basic information about the current state of the project, such as what files you have edited or created.
 \subsubsection{Committing Files}
 \paragraph{}
-Once you have made changes to the project files and are happy with your changes, you are ready to \textbf{commit} your changes. This can be done by running the following command in the project directory. You will need to provide a commit message, which is a short message for describing what you have changed in this commit. E.g. \lstinline{"added new sound effects"}
+Once you have made changes to the project files and are happy with your changes, you are ready to \textbf{commit} your changes. Firstly you will need to add the files to the commit. To add all (modified) files to the commit, navigate to the top folder in the project and run the following.
 \begin{lstlisting}
-git commit -am "commit message"
+git add .
+\end{lstlisting}
+\paragraph{}
+Here the \lstinline{.} indicates that you are adding everything in the current directory.
+\paragraph{}
+You can also add individual files or directories.
+\begin{lstlisting}
+git add background2.png
+\end{lstlisting}
+\paragraph{}
+To commit these files, you will need to provide a commit message, which is a short message for describing what you have changed in this commit. E.g. \lstinline{"added new sound effects"}. Then run the following command.
+\begin{lstlisting}
+git commit -m "added new sound effects"
 \end{lstlisting}
 \paragraph{}
 If this is your first time using git, you will also need to run the following commands. Replace the email and name with your real email and name.
@@ -228,7 +248,7 @@ git config --global user.email "johnsmith@gmail.com"
 git config --global user.name "John Smith"
 \end{lstlisting}
 \paragraph{}
-After you have committed your changes try running \lstinline{git status} and see what has changed.
+After you have committed your changes try running \lstinline{git status} again.
 \subsubsection{Pushing Your Own Changes}
 \paragraph{}
 You have now committed your changes to the project, however your changes are not yet visible to the whole team. At this point, you can make more changes and make more commits if you would like. Once you are ready, you can share the changes with the whole team by running the following command.
@@ -268,12 +288,4 @@ git log
 \end{lstlisting}
 \paragraph{}
 This lists out all the commits so far including the person who made the commit, and the commit message. This can be useful for keeping track of who made what changes.
-\section{Trello}
-\paragraph{}
-Trello is an app used for organising and planning out tasks. At each weekly meeting, tasks will be reviewed and assigned using Trello.
-\begin{itemize}
-\item Sign up for Trello at \url{https://trello.com}
-\item Accept the Trello board invitation at \\ \url{https://trello.com/invite/b/CW6IRbz0/b1605676bf57e5327f3cd156d03979d7/direct-daylight-game}
-\item You can now view and edit the Trello board at \url{https://trello.com/b/CW6IRbz0}
-\end{itemize}
 \end{document}
