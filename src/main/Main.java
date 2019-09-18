@@ -1,5 +1,6 @@
 package main;
 
+import entities.Character;
 import processing.core.PApplet;
 import processing.core.PVector;
 
@@ -7,7 +8,7 @@ public class Main extends PApplet {
 
 	public static Main P;
 
-	private Camera camera;
+	private Character character;
 
 	private int prevMillis;
 
@@ -24,20 +25,13 @@ public class Main extends PApplet {
 	public void setup() {
 		P = this;
 		// surface.setResizable(true);
+
 		ResourceManager.init();
+		character = new Character();
+
 		InputManager.init();
 		SceneManager.init();
 
-		camera = new Camera(new PVector(1500, 0));
-	}
-
-	private void handleInputs(float dt) {
-		if (InputManager.isKeyPressed(java.awt.event.KeyEvent.VK_D)) {
-			camera.moveRight(dt);
-		}
-		if (InputManager.isKeyPressed(java.awt.event.KeyEvent.VK_A)) {
-			camera.moveLeft(dt);
-		}
 	}
 
 	@Override
@@ -46,12 +40,9 @@ public class Main extends PApplet {
 		float dt = (millis - prevMillis) / 1000f;
 		prevMillis = millis;
 
-		handleInputs(dt);
-
 		background(255, 255, 255);
 		SceneManager.update(dt);
-		SceneManager.draw(camera);
-
+		SceneManager.draw(character.getPos());
 	}
 
 	@Override
@@ -68,6 +59,10 @@ public class Main extends PApplet {
 	public void dispose() {
 		// do not get rid of this line otherwise the window won't close!
 		super.dispose();
+	}
+
+	public Character getCharacter() {
+		return character;
 	}
 
 }

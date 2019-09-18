@@ -1,11 +1,12 @@
 package entities;
 
+import main.ResourceManager.ResourceKey;
 import processing.core.PVector;
 
-public class Npc extends Entity implements IInteractable {
+public class Npc extends SpriteEntity implements IInteractable {
 
-	public Npc(PVector pos) {
-		super(pos);
+	public Npc(PVector pos, ResourceKey key) {
+		super(pos, key);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -16,15 +17,8 @@ public class Npc extends Entity implements IInteractable {
 	}
 
 	@Override
-	public void draw(PVector offset) {
+	public void trigger() {
 		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public Event trigger() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

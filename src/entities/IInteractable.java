@@ -2,6 +2,6 @@ package entities;
 
 public interface IInteractable {
 
-	public Event trigger();
+	public void trigger();
 
 }

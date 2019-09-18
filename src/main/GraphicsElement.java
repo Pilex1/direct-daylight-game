@@ -1,5 +1,7 @@
 package main;
 
+import entities.Character;
+
 public interface GraphicsElement {
-	public void draw(Camera camera);
+	public void draw(Character camera);
 }

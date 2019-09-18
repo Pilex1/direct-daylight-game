@@ -9,7 +9,7 @@ import processing.core.PImage;
 public class ResourceManager {
 
 	public enum ResourceKey {
-		SEVEN_HILLS_BACKGROUND, SEVEN_HILLS_FOREGROUND, BUS, GREAT_WESTERN, TAKEOFF, CITY_LIGHTS
+		SEVEN_HILLS_BACKGROUND, SEVEN_HILLS_FOREGROUND, BUS, GREAT_WESTERN, TAKEOFF, CITY_LIGHTS, GUY
 	}
 
 	private static HashMap<ResourceKey, PImage> resources;
@@ -23,6 +23,8 @@ public class ResourceManager {
 		resources.put(ResourceKey.GREAT_WESTERN, P.loadImage("graphics/great-western.png"));
 		resources.put(ResourceKey.TAKEOFF, P.loadImage("graphics/takeoff.png"));
 		resources.put(ResourceKey.CITY_LIGHTS, P.loadImage("graphics/city-lights.png"));
+		resources.put(ResourceKey.GUY, P.loadImage("graphics/guy.png"));
+
 
 	}
 

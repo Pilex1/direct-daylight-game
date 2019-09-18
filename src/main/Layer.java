@@ -28,17 +28,17 @@ public class Layer {
 		components.forEach(c -> c.update(dt));
 	}
 
-	public void draw(Camera camera) {
+	public void draw(PVector view) {
 		P.pushMatrix();
-
 		P.tint(tint.getRGB());
 
 		PVector offset = new PVector();
-		offset.x = -camera.getPos().x + this.offset.x;
-		offset.y = -camera.getPos().y + this.offset.y;
-		offset.z = -camera.getPos().z + this.offset.z;
+		offset.x = -view.x + this.offset.x;
+		offset.y = -view.y + this.offset.y;
+		offset.z = -view.z + this.offset.z;
 
 		components.forEach(c -> c.draw(offset));
+		
 		P.noTint();
 		P.popMatrix();
 	}

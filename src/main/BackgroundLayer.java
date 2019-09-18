@@ -10,9 +10,16 @@ import processing.core.PVector;
 
 public class BackgroundLayer extends Layer {
 
-	public BackgroundLayer(ResourceKey key, PVector offset, Color tint, float scale) {
-		super(offset, tint);
-		components.add(new Background(key, scale));
+	private Background background;
+	
+	public BackgroundLayer(ResourceKey key, PVector offset, float depth, Color tint, float scale) {
+		super(new PVector(offset.x, offset.y, depth), tint);
+		background = new Background(key, scale);
+		components.add(background);
+	}
+	
+	public PVector getSize() {
+		return new PVector(background.scale * background.image.width, background.scale * background.image.height);
 	}
 
 	private class Background implements IGraphicsComponent {
@@ -36,7 +43,7 @@ public class BackgroundLayer extends Layer {
 			P.translate(0, 0, 0);
 
 			// view matrix (camera)
-			P.translate(offset.x / offset.z, offset.y, 0);
+			P.translate((int)(offset.x / offset.z), offset.y, 0);
 
 			P.image(image, 0, 0);
 		}

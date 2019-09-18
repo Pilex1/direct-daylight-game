@@ -2,6 +2,7 @@ package entities;
 
 import main.IGraphicsComponent;
 import processing.core.PVector;
+import static main.Main.P;
 
 public abstract class Entity implements IGraphicsComponent {
 
@@ -15,6 +16,20 @@ public abstract class Entity implements IGraphicsComponent {
 	public abstract void update(float dt);
 
 	@Override
-	public abstract void draw(PVector offset);
+	public final void draw(PVector offset) {
+		// model matrix
+		P.translate(pos.x / offset.z, pos.y, 0);
+		
+		// view matrix (camera)
+		P.translate(offset.x, offset.y);
+		
+		drawRelative();
+	}
+
+	public abstract void drawRelative();
+
+	public PVector getPos() {
+		return pos;
+	}
 
 }
