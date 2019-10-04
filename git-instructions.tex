@@ -77,16 +77,22 @@
 \section{Introduction}
 The Direct Daylight Project is a 2.5D, retro-style, story-driven game, with its key themes centred around nostalgia and discovery.
 \subsection{The Team}
-\begin{center}
-\begin{tabular}{ll}
-\textbf{Name} & \textbf{Role} \\ 
-\hline 
-Alex Tan & Technical Lead \\
-Brian Huang & Musical Lead \\
-Dylan Kroft & Project Manager \\
-Xing Lin & Artistic Lead
-\end{tabular} 
-\end{center}
+\subsubsection{Alex Tan}
+\textbf{Role:} Technical Lead\\
+\textbf{Google Drive:} \lstinline{torc.madra@hotmail.com}\\
+\textbf{Trello:} \lstinline{@alextan60}\\
+\subsubsection{Brian Huang}
+\textbf{Role:} Musical Lead\\
+\textbf{Google Drive:} \lstinline{brianhuang324@gmail.com}\\
+\textbf{Trello:} \lstinline{}\\
+\subsubsection{Dylan Kroft}
+\textbf{Role:} Graphic Designer\\
+\textbf{Google Drive:} \lstinline{dylankroft@gmail.com}\\
+\textbf{Trello:} \lstinline{@dylankroft}\\
+\subsubsection{Xing Lin}
+\textbf{Role:} Artistic Lead\\
+\textbf{Google Drive:} \lstinline{elevatedcross.ing@gmail.com}\\
+\textbf{Trello:} \lstinline{@xinglin7}\\
 \subsection{Open Positions}
 \begin{enumerate}
 \item \textbf{Artist}
@@ -105,61 +111,31 @@ Xing Lin & Artistic Lead
 \end{enumerate}
 \subsection{Weekly Meetings}
 There will be weekly meetings held in-person to discuss the progress of the project. These will generally be held on Sunday afternoons. Contact Alex for more information.
-\subsection{Learn to Code!}
-The game code is written in Java, using the Processing graphics library. Processing is extremely easy and fun to learn, and you can find some introductory resources at \url{http://directdaylight.com/learn-processing/learn-processing-presentation.pdf}. These resources are aimed towards teaching people who have no prior programming experience the basics of Java and the Processing library.
-\subsubsection{Caveats}
-If you'd like to contribute to the game code, there are some minor differences between the presentation slides and the game code.
-\begin{enumerate}
-\item It is recommended that you use an Integrated Development Environment (IDE) such as Eclipse for Java, instead of the Processing Environment. You can download Eclipse at\\ \url{https://www.eclipse.org/downloads/}.
-\item If you want to access the in-built Processing functions and variables within the code, you first need to put a static import at the top of the file.
-\begin{lstlisting}[language=Java]
-import static main.Main.P;
-\end{lstlisting}
-Then you need to prefix all Processing function calls and variables with \lstinline[language=Java]{P.} as in the following example.
-\begin{lstlisting}[language=Java]
-P.rect(100, 100, 300, 200);
-\end{lstlisting}
-Here is a complete example.
-\begin{lstlisting}[language=Java]
-package main;
-
-import static main.Main.P;
-
-import main.ResourceManager.ResourceKey;
-import processing.core.PImage;
-import processing.core.PVector;
-
-public class BackgroundLayer implements GraphicsElement {
-
-	private PImage image;
-	private float parallaxFactor;
-
-	public BackgroundLayer(ResourceKey key, PVector offset, float parallaxFactor) {
-		image = ResourceManager.get(key);
-		this.parallaxFactor = parallaxFactor;
-	}
-
-	@Override
-	public void draw(Camera camera) {
-		P.pushMatrix();
-		P.translate(-camera.getPos().x * parallaxFactor, -camera.getPos().y);
-		P.image(image, 0, 0);
-		P.popMatrix();
-	}
-
-}
-\end{lstlisting}
-\end{enumerate}
 \section{Documentation}
-The majority of the project documentation can be found in the shared Google Drive folder. Contact Alex for more information.
-\section{Trello}
+\subsection{Google Drive}
 \paragraph{}
-Trello is an app used for organising and planning out tasks. At each weekly meeting, tasks will be reviewed and assigned using Trello.
+The majority of the project documentation can be found in the shared Google Drive folder. Contact Alex for more information.
+\paragraph{}
+The main document \textit{Direct Daylight} contains detailed information about the game including the overall themes, mechanics, gameplay, storyline, progression, and the implementation technicalities.
+\paragraph{}
+The \textit{Artwork} document is used for documenting details about art in the game.
+\subsection{Trello}
+\paragraph{}
+Trello is an app used for organising and planning out tasks, which helps in tracking the progress of the project.
 \begin{itemize}
 \item Sign up for Trello at \url{https://trello.com}
 \item Accept the Trello board invitation at \\ \url{https://trello.com/invite/b/CW6IRbz0/b1605676bf57e5327f3cd156d03979d7/direct-daylight-game}
-\item You can now view and edit the Trello board at \url{https://trello.com/b/CW6IRbz0}
+\item The Trello Board can now be edited at \url{https://trello.com/b/CW6IRbz0}
 \end{itemize}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1.0, width=\textwidth]{latex-images/trello}
+\caption{\textit{Direct Daylight} Trello Board}
+\end{figure}
+\paragraph{}
+Please try to stick to the schedule and meet deadlines so that the project can progress swiftly. Make sure you check the Trello board before each meeting to ensure you have completed the assigned tasks.
+\paragraph{}
+Previous meeting minutes, as well as the agenda for the next upcoming meeting will also be on Trello.
 \section{SSH \& Git}
 \paragraph{}
 This section covers how to download the project files, make changes, and sync these changes so that it can be viewed by the whole team.
@@ -215,14 +191,6 @@ git clone git@directdaylight.com:direct-daylight-game
 \paragraph{}
 This will create a new folder named \lstinline{direct-daylight-game} and download the project into that folder.
 \subsection{Git Primer}
-\subsubsection{Viewing the Status of Git}
-\paragraph{}
-Now that you have a copy of the project files, you can start editing the files. Try changing a file or creating a new file. Now run the following command.
-\begin{lstlisting}
-git status
-\end{lstlisting}
-\paragraph{}
-This displays basic information about the current state of the project, such as what files you have edited or created.
 \subsubsection{Committing Files}
 \paragraph{}
 Once you have made changes to the project files and are happy with your changes, you are ready to \textbf{commit} your changes. Firstly you will need to add the files to the commit. To add all (modified) files to the commit, navigate to the top folder in the project and run the following.
@@ -237,7 +205,19 @@ You can also add individual files or directories.
 git add background2.png
 \end{lstlisting}
 \paragraph{}
-To commit these files, you will need to provide a commit message, which is a short message for describing what you have changed in this commit. E.g. \lstinline{"added new sound effects"}. Then run the following command.
+To check that you have added the correct files, run the following command.
+\begin{lstlisting}
+git status
+\end{lstlisting}
+\paragraph{}
+This displays basic information about the current state of the project, such as any changes to files you have made, and information about commits.
+\paragraph{}
+If you have successfully added your files to the commit, you should see a message like the following.
+\begin{lstlisting}
+
+\end{lstlisting}
+\paragraph{}
+To commit these files, you will need to provide a commit message, which is a short message for describing what you have changed in this commit e.g. \lstinline{"added new sound effects"}.
 \begin{lstlisting}
 git commit -m "added new sound effects"
 \end{lstlisting}
@@ -265,7 +245,7 @@ Other people may be working on the project as well, and will be committing and p
 git pull origin master
 \end{lstlisting}
 \paragraph{}
-This may fail if you have edited files but not yet committed them. This is because these changes may potentially be overwritten. The simplest way to solve this is to commit your changes. Alternatively, you can \textbf{stash} your changes. We will discuss this later on.
+This may fail if you have edited files but not yet committed them. This is because these changes may potentially be overwritten. The simplest way to solve this is to commit your changes. Alternatively, you can \textbf{stash} your changes. We will discuss stashing later on.
 \paragraph{}
 If you are having trouble pushing to the server, it may be because someone else has already made changes using \lstinline{git push origin master}, and you are still on the old version of the project. In this case, running \lstinline{git pull origin master}, and then pushing your changes as usual using \lstinline{git push origin master} should fix the issue.
 \paragraph{}
@@ -287,5 +267,26 @@ You can view the history of the project using the following command.
 git log
 \end{lstlisting}
 \paragraph{}
-This lists out all the commits so far including the person who made the commit, and the commit message. This can be useful for keeping track of who made what changes.
+This lists out all the commits so far including the commit author and commit message of each commit.
+\section{Code}
+\paragraph{}
+The game code is written in Java, using the Processing graphics library. You can find some introductory resources at \url{http://directdaylight.com/learn-processing/learn-processing-presentation.pdf} to get you started.
+\subsection{Eclipse}
+\paragraph{}
+To edit the code and run the game, it is recommended that you use an Integrated Development Environment (IDE) such as Eclipse. The following section will go through setting up Eclipse.
+\subsubsection{Setting Up Eclipse}
+\begin{enumerate}
+\item You will first need to download Eclipse from \url{https://www.eclipse.org/downloads/} and install it. Inside the installer, make sure you choose the Java edition.
+\item When you first run Eclipse, you will get a prompt asking for a working directory. You can pick any folder you want, or just use the default.
+\item Once Eclipse has loaded, you will be greeted with the Welcome Page. Click on the \textit{Workbench} button in the top right.
+\item Now in the \textit{Package Explorer} tab on the left, right-click and select \textit{Import}.
+\item Select \textit{General}, then \textit{Existing Projects Into Workspace} and click \textit{Next}.
+\item Select \textit{Root Directory}, then click on \textit{Browse}. Navigate to where you have saved the \lstinline{direct-daylight-game} folder. Make sure that under the \textit{Projects} tab, \lstinline{direct-daylight-game} is selected. Also make sure that under the \textit{Options} tab, the \textit{Copy Projects Into Workspace} checkbox is \textbf{not} checked. 
+\item Finally, click \textit{Finish}.
+\end{enumerate}
+\subsubsection{Running the Game}
+\paragraph{}
+The \lstinline{main} function is located under \lstinline{main/Game.java}. 
+\paragraph{}
+In Eclipse, navigate to \lstinline{direct-daylight-game/src/main/Game.java}, then click on the green run button located on the top toolbar. This will run the game!
 \end{document}

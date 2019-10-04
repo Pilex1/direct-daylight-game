@@ -1,11 +1,10 @@
 package main;
 
-import static main.Main.P;
-
 import java.awt.Color;
 import java.util.HashSet;
 import java.util.Set;
 
+import processing.core.PGraphics;
 import processing.core.PVector;
 
 public class Layer {
@@ -23,24 +22,28 @@ public class Layer {
 	protected Layer() {
 		this(new PVector(0, 0, 1), Color.WHITE);
 	}
+	
+	public float getDepth() {
+		return offset.z;
+	}
 
 	public void update(float dt) {
 		components.forEach(c -> c.update(dt));
 	}
 
-	public void draw(PVector view) {
-		P.pushMatrix();
-		P.tint(tint.getRGB());
+	public void draw(PGraphics graphics, PVector view) {
+		graphics.pushMatrix();
+		graphics.tint(tint.getRGB());
 
 		PVector offset = new PVector();
 		offset.x = -view.x + this.offset.x;
 		offset.y = -view.y + this.offset.y;
 		offset.z = -view.z + this.offset.z;
 
-		components.forEach(c -> c.draw(offset));
+		components.forEach(c -> c.draw(graphics, offset));
 		
-		P.noTint();
-		P.popMatrix();
+		graphics.noTint();
+		graphics.popMatrix();
 	}
 
 }

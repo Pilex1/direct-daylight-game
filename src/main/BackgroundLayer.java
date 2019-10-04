@@ -1,51 +1,55 @@
 package main;
 
-import static main.Main.P;
-
 import java.awt.Color;
 
 import main.ResourceManager.ResourceKey;
+import processing.core.PGraphics;
 import processing.core.PImage;
 import processing.core.PVector;
 
 public class BackgroundLayer extends Layer {
 
 	private Background background;
-	
-	public BackgroundLayer(ResourceKey key, PVector offset, float depth, Color tint, float scale) {
+
+	public BackgroundLayer(PImage image, float depth, PVector offset, Color tint, float scale) {
 		super(new PVector(offset.x, offset.y, depth), tint);
-		background = new Background(key, scale);
+
+		background = new Background(image, scale);
 		components.add(background);
 	}
-	
+
 	public PVector getSize() {
-		return new PVector(background.scale * background.image.width, background.scale * background.image.height);
+		return new PVector(background.getScale() * background.image.width, background.getScale() * background.image.height);
 	}
+
 
 	private class Background implements IGraphicsComponent {
 
 		private float scale;
 		private PImage image;
 
-		private Background(ResourceKey key, float scale) {
+		private Background(PImage image, float scale) {
 			this.scale = scale;
-			image = ResourceManager.get(key);
+			this.image = image;
 		}
 
+		private float getScale() {
+			float widthAdjust = (float) Game.getWidth() / image.width;
+			float heightAdjust = (float) Game.getHeight() / image.height;
+			return scale * Math.max(widthAdjust, heightAdjust);
+		}
+		
 		@Override
 		public void update(float dt) {
 		}
+		
 
 		@Override
-		public void draw(PVector offset) {
-			// model matrix
-			P.scale(scale);
-			P.translate(0, 0, 0);
-
-			// view matrix (camera)
-			P.translate((int)(offset.x / offset.z), offset.y, 0);
-
-			P.image(image, 0, 0);
+		public void draw(PGraphics graphics, PVector offset) {
+			graphics.translate((int) (offset.x / offset.z), offset.y, 0);
+			graphics.scale(getScale());
+			graphics.translate(0, 0, 0);
+			graphics.image(image, 0, 0);
 		}
 
 	}

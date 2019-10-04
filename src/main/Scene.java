@@ -1,13 +1,20 @@
 package main;
 
-import static main.Main.P;
-
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
+import processing.core.PGraphics;
 import processing.core.PVector;
 
 public class Scene {
+
+	public enum SceneKey {
+		CENTRAL, SEVEN_HILLS, HAYMARKET
+	}
+	
+	private SceneKey key;
 
 	private List<Layer> layers;
 
@@ -16,22 +23,31 @@ public class Scene {
 	 * value
 	 */
 	private BackgroundLayer foreground;
-	
+
 	/**
 	 * this layer contains only the character
 	 */
 	private CharacterLayer characterLayer;
 
-	public Scene(Layer... layers) {
-		this.layers = new ArrayList<Layer>();
+	public Scene(SceneKey key, List<Layer> layers) {
+		this.key = key;
+		this.layers = layers;
 		for (Layer l : layers) {
-			addLayer(l);
+			processLayer(l);
 		}
 		characterLayer = new CharacterLayer();
-		addLayer(characterLayer);
+		processLayer(characterLayer);
+		this.layers.sort(new Comparator<Layer>() {
+
+			@Override
+			public int compare(Layer l1, Layer l2) {
+				return (int) Math.signum(l2.getDepth() - l1.getDepth());
+			}
+		});
+		layers.add(characterLayer);
 	}
 
-	private void addLayer(Layer l) {
+	private void processLayer(Layer l) {
 		if (l instanceof BackgroundLayer) {
 			if (foreground == null) {
 				foreground = (BackgroundLayer) l;
@@ -41,29 +57,30 @@ public class Scene {
 				}
 			}
 		}
-		layers.add(l);
 	}
 
 	public void update(float dt) {
 		layers.forEach(l -> l.update(dt));
 	}
 
-	public void draw(PVector characterPos) {
+	public void draw(PGraphics graphics, PVector characterPos) {
 		// normally, the camera pans with the player, so that the player is always in
 		// the middle of the screen
 		// however, if the camera is on the edge of the scene we stop panning
 
-		PVector view;
+		PVector restrictedPos = characterPos.copy();
+		restrictedPos.x = Math.max(Game.getWidth() / 2, restrictedPos.x);
+		restrictedPos.x = Math.min(foreground.getSize().x - Game.getWidth()/2, restrictedPos.x);
+//		System.out.println(foreground.getSize());
+//		System.out.println(characterPos.x);
 
-		if (characterPos.x < P.width/2) {
-			view = new PVector(0, characterPos.y);
-		} else if (characterPos.x > foreground.getSize().x - P.width/2) {
-			view = new PVector(foreground.getSize().x - P.width, characterPos.y);
-		} else {
-			view = new PVector(characterPos.x - P.width/2, characterPos.y);
-		}
+		PVector view = new PVector(restrictedPos.x - Game.getWidth() / 2, restrictedPos.y);
 
-		layers.forEach(l -> l.draw(view));
+		layers.forEach(l -> l.draw(graphics, view));
+	}
+	
+	public SceneKey getKey() {
+		return this.key;
 	}
 
 }
