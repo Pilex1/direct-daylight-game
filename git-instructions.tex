@@ -213,22 +213,29 @@ git status
 This displays basic information about the current state of the project, such as any changes to files you have made, and information about commits.
 \paragraph{}
 If you have successfully added your files to the commit, you should see a message like the following.
-\begin{lstlisting}
-
-\end{lstlisting}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1.0, width=0.8\textwidth]{latex-images/git1}
+\caption{}
+\end{figure}
 \paragraph{}
-To commit these files, you will need to provide a commit message, which is a short message for describing what you have changed in this commit e.g. \lstinline{"added new sound effects"}.
-\begin{lstlisting}
-git commit -m "added new sound effects"
-\end{lstlisting}
-\paragraph{}
-If this is your first time using git, you will also need to run the following commands. Replace the email and name with your real email and name.
+If this is your first time using \lstinline{git}, you will also need to run the following commands. Replace the email and name with your real email and name.
 \begin{lstlisting}
 git config --global user.email "johnsmith@gmail.com"
 git config --global user.name "John Smith"
 \end{lstlisting}
 \paragraph{}
-After you have committed your changes try running \lstinline{git status} again.
+To commit the files you have added, you will need to provide a commit message, which is a short but descriptive message for describing what you have changed in this commit e.g. \lstinline{"added animation"}.
+\begin{lstlisting}
+git commit -m "added animation"
+\end{lstlisting}
+\paragraph{}
+After you have committed your changes try running \lstinline{git status} again, and you should see a message like the following.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1.0, width=0.8\textwidth]{latex-images/git2}
+\caption{}
+\end{figure}
 \subsubsection{Pushing Your Own Changes}
 \paragraph{}
 You have now committed your changes to the project, however your changes are not yet visible to the whole team. At this point, you can make more changes and make more commits if you would like. Once you are ready, you can share the changes with the whole team by running the following command.

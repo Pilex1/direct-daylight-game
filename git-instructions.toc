@@ -36,31 +36,31 @@
 \contentsline {paragraph}{}{6}{paragraph*.20}
 \contentsline {paragraph}{}{7}{paragraph*.21}
 \contentsline {paragraph}{}{7}{paragraph*.22}
-\contentsline {paragraph}{}{7}{paragraph*.23}
 \contentsline {paragraph}{}{7}{paragraph*.24}
 \contentsline {paragraph}{}{7}{paragraph*.25}
-\contentsline {subsubsection}{\numberline {3.5.2}Pushing Your Own Changes}{7}{subsubsection.3.5.2}
 \contentsline {paragraph}{}{7}{paragraph*.26}
-\contentsline {paragraph}{}{7}{paragraph*.27}
-\contentsline {paragraph}{}{7}{paragraph*.28}
-\contentsline {subsubsection}{\numberline {3.5.3}Pulling Other People's Changes}{7}{subsubsection.3.5.3}
-\contentsline {paragraph}{}{7}{paragraph*.29}
+\contentsline {subsubsection}{\numberline {3.5.2}Pushing Your Own Changes}{8}{subsubsection.3.5.2}
+\contentsline {paragraph}{}{8}{paragraph*.28}
+\contentsline {paragraph}{}{8}{paragraph*.29}
 \contentsline {paragraph}{}{8}{paragraph*.30}
+\contentsline {subsubsection}{\numberline {3.5.3}Pulling Other People's Changes}{8}{subsubsection.3.5.3}
 \contentsline {paragraph}{}{8}{paragraph*.31}
-\contentsline {subsubsection}{\numberline {3.5.4}Merge Conflicts}{8}{subsubsection.3.5.4}
-\contentsline {paragraph}{}{8}{paragraph*.32}
-\contentsline {paragraph}{}{8}{paragraph*.33}
-\contentsline {subsubsection}{\numberline {3.5.5}Stashing}{8}{subsubsection.3.5.5}
-\contentsline {paragraph}{}{8}{paragraph*.34}
-\contentsline {paragraph}{}{8}{paragraph*.35}
-\contentsline {subsubsection}{\numberline {3.5.6}Viewing the Project History}{8}{subsubsection.3.5.6}
-\contentsline {paragraph}{}{8}{paragraph*.36}
-\contentsline {paragraph}{}{8}{paragraph*.37}
-\contentsline {section}{\numberline {4}Code}{9}{section.4}
+\contentsline {paragraph}{}{9}{paragraph*.32}
+\contentsline {paragraph}{}{9}{paragraph*.33}
+\contentsline {subsubsection}{\numberline {3.5.4}Merge Conflicts}{9}{subsubsection.3.5.4}
+\contentsline {paragraph}{}{9}{paragraph*.34}
+\contentsline {paragraph}{}{9}{paragraph*.35}
+\contentsline {subsubsection}{\numberline {3.5.5}Stashing}{9}{subsubsection.3.5.5}
+\contentsline {paragraph}{}{9}{paragraph*.36}
+\contentsline {paragraph}{}{9}{paragraph*.37}
+\contentsline {subsubsection}{\numberline {3.5.6}Viewing the Project History}{9}{subsubsection.3.5.6}
 \contentsline {paragraph}{}{9}{paragraph*.38}
-\contentsline {subsection}{\numberline {4.1}Eclipse}{9}{subsection.4.1}
 \contentsline {paragraph}{}{9}{paragraph*.39}
-\contentsline {subsubsection}{\numberline {4.1.1}Setting Up Eclipse}{9}{subsubsection.4.1.1}
-\contentsline {subsubsection}{\numberline {4.1.2}Running the Game}{9}{subsubsection.4.1.2}
-\contentsline {paragraph}{}{9}{paragraph*.40}
-\contentsline {paragraph}{}{9}{paragraph*.41}
+\contentsline {section}{\numberline {4}Code}{10}{section.4}
+\contentsline {paragraph}{}{10}{paragraph*.40}
+\contentsline {subsection}{\numberline {4.1}Eclipse}{10}{subsection.4.1}
+\contentsline {paragraph}{}{10}{paragraph*.41}
+\contentsline {subsubsection}{\numberline {4.1.1}Setting Up Eclipse}{10}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Running the Game}{10}{subsubsection.4.1.2}
+\contentsline {paragraph}{}{10}{paragraph*.42}
+\contentsline {paragraph}{}{10}{paragraph*.43}
