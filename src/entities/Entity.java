@@ -1,8 +1,8 @@
 package entities;
 
 import main.IGraphicsComponent;
+import processing.core.PGraphics;
 import processing.core.PVector;
-import static main.Main.P;
 
 public abstract class Entity implements IGraphicsComponent {
 
@@ -16,17 +16,17 @@ public abstract class Entity implements IGraphicsComponent {
 	public abstract void update(float dt);
 
 	@Override
-	public final void draw(PVector offset) {
+	public final void draw(PGraphics graphics, PVector offset) {
 		// model matrix
-		P.translate(pos.x / offset.z, pos.y, 0);
+		graphics.translate(pos.x / offset.z, pos.y, 0);
 		
 		// view matrix (camera)
-		P.translate(offset.x, offset.y);
+		graphics.translate(offset.x, offset.y);
 		
-		drawRelative();
+		drawRelative(graphics);
 	}
 
-	public abstract void drawRelative();
+	public abstract void drawRelative(PGraphics graphics);
 
 	public PVector getPos() {
 		return pos;

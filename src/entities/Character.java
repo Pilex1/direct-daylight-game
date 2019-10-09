@@ -1,16 +1,19 @@
 package entities;
 
-import main.InputManager;
-import main.ResourceManager.ResourceKey;
-import processing.core.PVector;
-import static main.Main.P;
+import java.awt.event.KeyEvent;
 
-public final class Character extends SpriteEntity {
+import main.Game;
+import main.InputManager;
+import processing.core.PGraphics;
+import processing.core.PImage;
+import processing.core.PVector;
+
+public final class Character extends AnimatedSpriteEntity<Movement4> {
 
 	private float speed = 200;
 
 	public Character() {
-		super(new PVector(), ResourceKey.GUY);
+		super(new PVector(), Movement4.RIGHT_STILL, "character");
 	}
 
 	private void moveLeft(float dt) {
@@ -23,18 +26,31 @@ public final class Character extends SpriteEntity {
 
 	@Override
 	public void update(float dt) {
-		if (InputManager.isKeyPressed(java.awt.event.KeyEvent.VK_D)) {
+		super.update(dt);
+		if (getAnimationState() == Movement4.LEFT) {
+			setAnimationState(Movement4.LEFT_STILL);
+		}
+		if (getAnimationState() == Movement4.RIGHT) {
+			setAnimationState(Movement4.RIGHT_STILL);
+		}
+		
+		
+		if (InputManager.isKeyPressed(KeyEvent.VK_D)) {
 			moveRight(dt);
+			setAnimationState(Movement4.RIGHT);
 		}
-		if (InputManager.isKeyPressed(java.awt.event.KeyEvent.VK_A)) {
+		if (InputManager.isKeyPressed(KeyEvent.VK_A)) {
 			moveLeft(dt);
+			setAnimationState(Movement4.LEFT);
 		}
+		
 	}
 
 	@Override
-	public void drawRelative() {
+	public void drawRelative(PGraphics graphics) {
 		// change P.height - 150 to something else
-		P.image(image, -image.width/2, P.height-image.height/2 - 100);
+		PImage image = getCurrentSprite();
+		graphics.image(image, -image.width/2, Game.getHeight()-image.height/2 - 100);
 	}
 	
 

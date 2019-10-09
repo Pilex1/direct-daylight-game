@@ -1,50 +1,66 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}
 \contentsline {subsection}{\numberline {1.1}The Team}{1}{subsection.1.1}
+\contentsline {subsubsection}{\numberline {1.1.1}Alex Tan}{1}{subsubsection.1.1.1}
+\contentsline {subsubsection}{\numberline {1.1.2}Brian Huang}{1}{subsubsection.1.1.2}
+\contentsline {subsubsection}{\numberline {1.1.3}Dylan Kroft}{1}{subsubsection.1.1.3}
+\contentsline {subsubsection}{\numberline {1.1.4}Xing Lin}{1}{subsubsection.1.1.4}
 \contentsline {subsection}{\numberline {1.2}Open Positions}{1}{subsection.1.2}
-\contentsline {subsection}{\numberline {1.3}Weekly Meetings}{1}{subsection.1.3}
-\contentsline {subsection}{\numberline {1.4}Learn to Code!}{1}{subsection.1.4}
-\contentsline {subsubsection}{\numberline {1.4.1}Caveats}{1}{subsubsection.1.4.1}
+\contentsline {subsection}{\numberline {1.3}Weekly Meetings}{2}{subsection.1.3}
 \contentsline {section}{\numberline {2}Documentation}{3}{section.2}
-\contentsline {section}{\numberline {3}Trello}{4}{section.3}
-\contentsline {paragraph}{}{4}{paragraph*.2}
-\contentsline {section}{\numberline {4}SSH \& Git}{5}{section.4}
-\contentsline {paragraph}{}{5}{paragraph*.3}
-\contentsline {subsection}{\numberline {4.1}Generating an SSH Key}{5}{subsection.4.1}
-\contentsline {paragraph}{}{5}{paragraph*.4}
-\contentsline {paragraph}{}{5}{paragraph*.5}
-\contentsline {subsection}{\numberline {4.2}Setting Up Git}{5}{subsection.4.2}
-\contentsline {paragraph}{}{5}{paragraph*.6}
-\contentsline {paragraph}{}{5}{paragraph*.7}
-\contentsline {subsection}{\numberline {4.3}Command Prompt Basics}{6}{subsection.4.3}
-\contentsline {paragraph}{}{6}{paragraph*.8}
-\contentsline {subsection}{\numberline {4.4}Cloning the Repo}{6}{subsection.4.4}
-\contentsline {paragraph}{}{6}{paragraph*.9}
-\contentsline {paragraph}{}{6}{paragraph*.10}
-\contentsline {subsection}{\numberline {4.5}Git Primer}{6}{subsection.4.5}
-\contentsline {subsubsection}{\numberline {4.5.1}Viewing the Status of Git}{6}{subsubsection.4.5.1}
-\contentsline {paragraph}{}{6}{paragraph*.11}
-\contentsline {paragraph}{}{6}{paragraph*.12}
-\contentsline {subsubsection}{\numberline {4.5.2}Committing Files}{6}{subsubsection.4.5.2}
-\contentsline {paragraph}{}{6}{paragraph*.13}
+\contentsline {subsection}{\numberline {2.1}Google Drive}{3}{subsection.2.1}
+\contentsline {paragraph}{}{3}{paragraph*.2}
+\contentsline {paragraph}{}{3}{paragraph*.3}
+\contentsline {paragraph}{}{3}{paragraph*.4}
+\contentsline {subsection}{\numberline {2.2}Trello}{3}{subsection.2.2}
+\contentsline {paragraph}{}{3}{paragraph*.5}
+\contentsline {paragraph}{}{4}{paragraph*.7}
+\contentsline {paragraph}{}{4}{paragraph*.8}
+\contentsline {section}{\numberline {3}SSH \& Git}{5}{section.3}
+\contentsline {paragraph}{}{5}{paragraph*.9}
+\contentsline {subsection}{\numberline {3.1}Generating an SSH Key}{5}{subsection.3.1}
+\contentsline {paragraph}{}{5}{paragraph*.10}
+\contentsline {paragraph}{}{5}{paragraph*.11}
+\contentsline {subsection}{\numberline {3.2}Setting Up Git}{5}{subsection.3.2}
+\contentsline {paragraph}{}{5}{paragraph*.12}
+\contentsline {paragraph}{}{5}{paragraph*.13}
+\contentsline {subsection}{\numberline {3.3}Command Prompt Basics}{6}{subsection.3.3}
 \contentsline {paragraph}{}{6}{paragraph*.14}
-\contentsline {paragraph}{}{7}{paragraph*.15}
-\contentsline {paragraph}{}{7}{paragraph*.16}
-\contentsline {paragraph}{}{7}{paragraph*.17}
-\contentsline {paragraph}{}{7}{paragraph*.18}
-\contentsline {subsubsection}{\numberline {4.5.3}Pushing Your Own Changes}{7}{subsubsection.4.5.3}
-\contentsline {paragraph}{}{7}{paragraph*.19}
-\contentsline {paragraph}{}{7}{paragraph*.20}
+\contentsline {subsection}{\numberline {3.4}Cloning the Repo}{6}{subsection.3.4}
+\contentsline {paragraph}{}{6}{paragraph*.15}
+\contentsline {paragraph}{}{6}{paragraph*.16}
+\contentsline {subsection}{\numberline {3.5}Git Primer}{6}{subsection.3.5}
+\contentsline {subsubsection}{\numberline {3.5.1}Committing Files}{6}{subsubsection.3.5.1}
+\contentsline {paragraph}{}{6}{paragraph*.17}
+\contentsline {paragraph}{}{6}{paragraph*.18}
+\contentsline {paragraph}{}{6}{paragraph*.19}
+\contentsline {paragraph}{}{6}{paragraph*.20}
 \contentsline {paragraph}{}{7}{paragraph*.21}
-\contentsline {subsubsection}{\numberline {4.5.4}Pulling Other People's Changes}{7}{subsubsection.4.5.4}
 \contentsline {paragraph}{}{7}{paragraph*.22}
-\contentsline {paragraph}{}{8}{paragraph*.23}
-\contentsline {paragraph}{}{8}{paragraph*.24}
-\contentsline {subsubsection}{\numberline {4.5.5}Merge Conflicts}{8}{subsubsection.4.5.5}
-\contentsline {paragraph}{}{8}{paragraph*.25}
-\contentsline {paragraph}{}{8}{paragraph*.26}
-\contentsline {subsubsection}{\numberline {4.5.6}Stashing}{8}{subsubsection.4.5.6}
-\contentsline {paragraph}{}{8}{paragraph*.27}
+\contentsline {paragraph}{}{7}{paragraph*.24}
+\contentsline {paragraph}{}{7}{paragraph*.25}
+\contentsline {paragraph}{}{7}{paragraph*.26}
+\contentsline {subsubsection}{\numberline {3.5.2}Pushing Your Own Changes}{8}{subsubsection.3.5.2}
 \contentsline {paragraph}{}{8}{paragraph*.28}
-\contentsline {subsubsection}{\numberline {4.5.7}Viewing the Project History}{8}{subsubsection.4.5.7}
 \contentsline {paragraph}{}{8}{paragraph*.29}
 \contentsline {paragraph}{}{8}{paragraph*.30}
+\contentsline {subsubsection}{\numberline {3.5.3}Pulling Other People's Changes}{8}{subsubsection.3.5.3}
+\contentsline {paragraph}{}{8}{paragraph*.31}
+\contentsline {paragraph}{}{9}{paragraph*.32}
+\contentsline {paragraph}{}{9}{paragraph*.33}
+\contentsline {subsubsection}{\numberline {3.5.4}Merge Conflicts}{9}{subsubsection.3.5.4}
+\contentsline {paragraph}{}{9}{paragraph*.34}
+\contentsline {paragraph}{}{9}{paragraph*.35}
+\contentsline {subsubsection}{\numberline {3.5.5}Stashing}{9}{subsubsection.3.5.5}
+\contentsline {paragraph}{}{9}{paragraph*.36}
+\contentsline {paragraph}{}{9}{paragraph*.37}
+\contentsline {subsubsection}{\numberline {3.5.6}Viewing the Project History}{9}{subsubsection.3.5.6}
+\contentsline {paragraph}{}{9}{paragraph*.38}
+\contentsline {paragraph}{}{9}{paragraph*.39}
+\contentsline {section}{\numberline {4}Code}{10}{section.4}
+\contentsline {paragraph}{}{10}{paragraph*.40}
+\contentsline {subsection}{\numberline {4.1}Eclipse}{10}{subsection.4.1}
+\contentsline {paragraph}{}{10}{paragraph*.41}
+\contentsline {subsubsection}{\numberline {4.1.1}Setting Up Eclipse}{10}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Running the Game}{10}{subsubsection.4.1.2}
+\contentsline {paragraph}{}{10}{paragraph*.42}
+\contentsline {paragraph}{}{10}{paragraph*.43}

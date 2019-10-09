@@ -2,29 +2,28 @@ package main;
 
 import entities.Character;
 import processing.core.PApplet;
-import processing.core.PVector;
 
-public class Main extends PApplet {
+public class Game extends PApplet {
 
-	public static Main P;
+	private static Game canvas;
 
 	private Character character;
 
 	private int prevMillis;
 
 	public static void main(String[] args) {
-		PApplet.main("main.Main");
+		PApplet.main("main.Game");
 	}
 
 	@Override
 	public void settings() {
-		size(1600, 900, P3D);
+		size(1280, 720, P3D);
+		canvas = this;
 	}
 
 	@Override
 	public void setup() {
-		P = this;
-		// surface.setResizable(true);
+		 surface.setResizable(true);
 
 		ResourceManager.init();
 		character = new Character();
@@ -38,11 +37,13 @@ public class Main extends PApplet {
 	public void draw() {
 		int millis = millis();
 		float dt = (millis - prevMillis) / 1000f;
-		prevMillis = millis;
+		if (prevMillis != 0) {
+			background(255, 255, 255);
+			SceneManager.update(dt);
+			SceneManager.draw(getGraphics(), character.getPos());
+		}
 
-		background(255, 255, 255);
-		SceneManager.update(dt);
-		SceneManager.draw(character.getPos());
+		prevMillis = millis;
 	}
 
 	@Override
@@ -61,8 +62,20 @@ public class Main extends PApplet {
 		super.dispose();
 	}
 
-	public Character getCharacter() {
-		return character;
+	public static Character getCharacter() {
+		return canvas.character;
+	}
+
+	public static int getWidth() {
+		return canvas.width;
+	}
+
+	public static int getHeight() {
+		return canvas.height;
+	}
+
+	public static PApplet getPApplet() {
+		return canvas;
 	}
 
 }
