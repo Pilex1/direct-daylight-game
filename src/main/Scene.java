@@ -82,5 +82,9 @@ public class Scene {
 	public SceneKey getKey() {
 		return this.key;
 	}
+	
+	public float getWidth() {
+		return foreground.getSize().x;
+	}
 
 }

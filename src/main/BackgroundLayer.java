@@ -2,7 +2,6 @@ package main;
 
 import java.awt.Color;
 
-import main.ResourceManager.ResourceKey;
 import processing.core.PGraphics;
 import processing.core.PImage;
 import processing.core.PVector;
@@ -46,7 +45,7 @@ public class BackgroundLayer extends Layer {
 
 		@Override
 		public void draw(PGraphics graphics, PVector offset) {
-			graphics.translate((int) (offset.x / offset.z), offset.y, 0);
+			graphics.translate((int) (offset.x / offset.z), offset.y);
 			graphics.scale(getScale());
 			graphics.translate(0, 0, 0);
 			graphics.image(image, 0, 0);

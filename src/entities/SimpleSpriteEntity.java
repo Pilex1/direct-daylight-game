@@ -1,7 +1,6 @@
 package entities;
 
 import main.ResourceManager;
-import main.ResourceManager.ResourceKey;
 import processing.core.PGraphics;
 import processing.core.PImage;
 import processing.core.PVector;

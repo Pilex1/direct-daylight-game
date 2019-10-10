@@ -18,7 +18,7 @@ public abstract class Entity implements IGraphicsComponent {
 	@Override
 	public final void draw(PGraphics graphics, PVector offset) {
 		// model matrix
-		graphics.translate(pos.x / offset.z, pos.y, 0);
+		graphics.translate(pos.x / offset.z, pos.y);
 		
 		// view matrix (camera)
 		graphics.translate(offset.x, offset.y);

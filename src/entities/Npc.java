@@ -1,7 +1,6 @@
 package entities;
 
 import main.Rand;
-import main.ResourceManager.ResourceKey;
 import processing.core.PVector;
 
 public class Npc extends SimpleSpriteEntity {

@@ -1,23 +1,21 @@
 package main;
 
 import java.awt.Color;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import javax.management.RuntimeErrorException;
-
-import entities.Entity;
 import entities.Bus;
-import main.ResourceManager.ResourceKey;
+import entities.Entity;
 import main.Scene.SceneKey;
-import main.SceneManager.SceneBuilder.BackgroundLayerBuilder;
 import processing.core.PGraphics;
 import processing.core.PVector;
 import terrain.Doorway;
+import terrain.Doorway.Side;
 import terrain.Location;
 
 public class SceneManager {
@@ -28,6 +26,7 @@ public class SceneManager {
 		private List<Layer> layers;
 
 		private BackgroundLayerBuilder background;
+		private EntityLayerBuilder entityLayer;
 
 		public SceneBuilder(SceneKey scene) {
 			this.scene = scene;
@@ -35,22 +34,86 @@ public class SceneManager {
 		}
 
 		public Scene build() {
+			addOldLayers();
 			return new Scene(scene, layers);
 		}
 
-		public BackgroundLayerBuilder newBackgroundLayer(String file, float depth) {
+		private void addOldLayers() {
+			if (background != null) {
+				BackgroundLayer layer = new BackgroundLayer(ResourceManager.getBackground(scene, background.file),
+						background.depth, background.offset, background.tint, background.scale);
+				layers.add(layer);
+			}
+			if (entityLayer != null) {
+				EntityLayer layer = new EntityLayer(entityLayer.entities.toArray(new Entity[0]), entityLayer.depth,
+						entityLayer.tint);
+				layers.add(layer);
+			}
+		}
+
+		public BackgroundLayerBuilder background(String file, float depth) {
+			addOldLayers();
+			background = null;
+			entityLayer = null;
+
 			background = new BackgroundLayerBuilder(file, depth);
 			return background;
 		}
 
-		public SceneBuilder addEntityLayer(Entity[] entities, float depth, Color color) {
-			layers.add(new EntityLayer(entities, depth, color));
-			return this;
+		public EntityLayerBuilder entities() {
+			addOldLayers();
+			background = null;
+			entityLayer = null;
+
+			entityLayer = new EntityLayerBuilder();
+			return entityLayer;
+		}
+
+		public class EntityLayerBuilder {
+
+			private float depth = 1;
+			private Color tint = Color.WHITE;
+
+			private List<Entity> entities = new ArrayList<>();
+
+			public EntityLayerBuilder() {
+			}
+
+			public BackgroundLayerBuilder background(String file, float depth) {
+				return SceneBuilder.this.background(file, depth);
+			}
+
+			public EntityLayerBuilder entities() {
+				return SceneBuilder.this.entities();
+			}
+
+			public Scene build() {
+				return SceneBuilder.this.build();
+			}
+
+			public EntityLayerBuilder entity(Entity entity) {
+				entities.add(entity);
+				return this;
+			}
+
+			public EntityLayerBuilder depth(float depth) {
+				this.depth = depth;
+				return this;
+			}
+
+			public EntityLayerBuilder tint(Color tint) {
+				this.tint = tint;
+				return this;
+			}
+
+			public EntityLayerBuilder doorway(Doorway.Side side, SceneKey newScene) {
+				Doorway doorway = new Doorway(scene, newScene, side);
+				return entity(doorway);
+			}
+
 		}
 
 		public class BackgroundLayerBuilder {
-
-			private String[] extensions = new String[] { ".png", ".jpg", ".gif" };
 
 			private String file;
 			private float depth;
@@ -63,9 +126,16 @@ public class SceneManager {
 				this.depth = depth;
 			}
 
-			public SceneBuilder createBackground() {
-				layers.add(new BackgroundLayer(ResourceManager.getBackground(scene, file), depth, offset, tint, scale));
-				return SceneBuilder.this;
+			public BackgroundLayerBuilder background(String file, float depth) {
+				return SceneBuilder.this.background(file, depth);
+			}
+
+			public EntityLayerBuilder entities() {
+				return SceneBuilder.this.entities();
+			}
+
+			public Scene build() {
+				return SceneBuilder.this.build();
 			}
 
 			public BackgroundLayerBuilder offset(PVector offset) {
@@ -98,67 +168,44 @@ public class SceneManager {
 	public static void init() {
 		scenes = new HashMap<>();
 
-		addScene(new SceneBuilder(SceneKey.SEVEN_HILLS).newBackgroundLayer("city-lights", Float.POSITIVE_INFINITY)
-				.tint(Color.GRAY).createBackground().newBackgroundLayer("background", 2f).tint(Color.GRAY)
-				.createBackground().newBackgroundLayer("foreground", 1f).tint(Color.GRAY).createBackground()
-				.addEntityLayer(new Entity[] { new Bus(new PVector(0, 530), new PVector(200, 0)) }, 1.5f,
-						Color.GRAY)
+		addScene(new SceneBuilder(SceneKey.SEVEN_HILLS)
+				.background("city-lights", Float.POSITIVE_INFINITY).tint(Color.GRAY)
+				.background("background", 2f).tint(Color.GRAY)
+				.background("foreground", 1f).tint(Color.GRAY)
+				.entities().depth(1.5f).tint(Color.GRAY).entity(new Bus(new PVector(0, 530), new PVector(200, 0)))
+				.entities().doorway(Side.Left, SceneKey.HAYMARKET)
 				.build());
 
-		// scenes.put(SceneKey.SevenHills,
-		// new Scene(new BackgroundLayerBuilder(ResourceKey.CITY_LIGHTS,
-		// Float.POSITIVE_INFINITY).build(),
-		//
-		// new BackgroundLayerBuilder(ResourceKey.SEVEN_HILLS_BACKGROUND,
-		// 2).tint(Color.GRAY).build(),
-		//
-		// new EntityLayer(new Entity[] { new Vehicle(new PVector(0, 530), new
-		// PVector(200, 0)) }, 1.5f,
-		// Color.GRAY),
-		//
-		// new BackgroundLayerBuilder(ResourceKey.SEVEN_HILLS_FOREGROUND,
-		// 1).tint(Color.GRAY).build()));
-		//
-		// scenes.put(SceneKey.CENTRAL, new Scene(
-		//
-		// new BackgroundLayerBuilder(ResourceKey.CITY_LIGHTS,
-		// Float.POSITIVE_INFINITY).build(),
-		//
-		// new BackgroundLayerBuilder(ResourceKey.CENTRAL_INSIDE_ARCHES, 1.4f).build(),
-		//
-		// new BackgroundLayerBuilder(ResourceKey.CENTRAL_INSIDE_LIGHTS, 1.2f).build(),
-		//
-		// new BackgroundLayerBuilder(ResourceKey.CENTRAL_INSIDE_GROUND, 1.2f).build(),
-		//
-		// new BackgroundLayerBuilder(ResourceKey.CENTRAL_INSIDE_FURNITURE,
-		// 1.1f).build(),
-		//
-		// new BackgroundLayerBuilder(ResourceKey.CENTRAL_INSIDE_TERMINAL, 1f).build()
-		//
-		// ));
-		//
-		// scenes.put(SceneKey.Haymarket,
-		// new Scene(new BackgroundLayerBuilder(ResourceKey.HAYMARKET_SKY,
-		// Float.POSITIVE_INFINITY).build(),
-		//
-		// new BackgroundLayerBuilder(ResourceKey.HAYMARKET_BACKGROUND1, 1.5f).build(),
-		//
-		// new BackgroundLayerBuilder(ResourceKey.HAYMARKET_BACKGROUND2, 1.75f).build(),
-		//
-		// new BackgroundLayerBuilder(ResourceKey.HAYMARKET_STREET, 1f).build(),
-		//
-		// new EntityLayer(new Entity[] { new Doorway(new Location(SceneKey.Haymarket,
-		// new PVector(0, 0)),
-		// new Location(SceneKey.CENTRAL, new PVector(0, 0))) })));
+		addScene(new SceneBuilder(SceneKey.HAYMARKET)
+				.background("sky", Float.POSITIVE_INFINITY)
+				.background("background2", 1.75f)
+				.background("background1", 1.5f)
+				.background("street", 1f)
+				.entities().doorway(Side.Right, SceneKey.SEVEN_HILLS).doorway(Side.Left, SceneKey.CENTRAL)
+				.build());
 
-		setActiveScene(new Location(SceneKey.SEVEN_HILLS, new PVector(Game.getWidth() / 2, 0)));
+		addScene(new SceneBuilder(SceneKey.CENTRAL)
+				.background("city-lights", Float.POSITIVE_INFINITY)
+				.background("arches", 1.4f)
+				.background("lights", 1.2f)
+				.background("ground", 1.2f)
+				.background("furniture", 1.1f)
+				.background("terminal-board", 1f)
+				.entities().doorway(Side.Right, SceneKey.HAYMARKET)
+				.build());
+
+		setActiveScene(Location.left(SceneKey.HAYMARKET));
 
 	}
 
 	public static void setActiveScene(Location loc) {
 		activeScene = scenes.get(loc.getScene());
 		activeSceneKey = loc.getScene();
-		Game.getCharacter().setPos(loc.getPos());
+		PVector absolutePos = loc.getPos().copy();
+		if (absolutePos.x < 0) {
+			absolutePos.x = activeScene.getWidth() - absolutePos.x;
+		}
+		Game.getCharacter().setPos(absolutePos);
 	}
 
 	public static SceneKey getActiveScene() {
@@ -166,15 +213,35 @@ public class SceneManager {
 	}
 
 	public static void update(float dt) {
+		long start = System.nanoTime();
 		if (activeScene != null) {
 			activeScene.update(dt);
+		}
+		long diff = System.nanoTime() - start;
+		Logger.getGlobal().log(Level.FINE, +diff / 1000 + "ms");
+		if (diff / 1000 > 1000) {
+//			System.out.println(diff / 1000);
 		}
 	}
 
 	public static void draw(PGraphics graphics, PVector characterPos) {
+		long start = System.nanoTime();
 		if (activeScene != null) {
 			activeScene.draw(graphics, characterPos);
 		}
+		long diff = System.nanoTime() - start;
+		Logger.getGlobal().log(Level.FINE, diff / 1000 + "ms");
+		if (diff / 1000 > 1000) {
+//			System.out.println(diff / 1000);
+		}
+	}
+
+	public static Scene getScene(SceneKey key) {
+		return scenes.get(key);
+	}
+	
+	public static Set<SceneKey> getSceneKeys() {
+		return scenes.keySet();
 	}
 
 }
